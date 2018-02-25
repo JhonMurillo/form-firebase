@@ -1,16 +1,49 @@
 <div class="form-container">
-  <a routerLink="/signup" id="goback">Sign In</a>
+    <div class="text-center">
+      <img [src]="image" width="200" alt="Form FB Logo">
+    </div>
 
-  <h2>{{ error }}</h2>
+    <a routerLink="/signup" id="goback">Sign In</a>
 
-  <span class="alert-danger" *ngIf="error" [@fallIn]='state'>{{ error }}</span>
+    <h2>{{ title }}</h2>
 
-  <form #formData='ngForm' (ngSubmit)="onSubmit(formData)">
+    <!--span class="alert-danger" *ngIf="error" [@fallIn]='state'>{{ error }}</span-->
 
-    <input type="text" placeholder="Email address.." [(ngModel)]="email" name="email" class="txt" required>
-    <input type="password" placeholder="Password" [(ngModel)]="password" name="password" class="txt" required>
+    <div class="card-panel red darken-1" *ngIf="error" [@fallIn]='state'>
+      <div class="row">
+        <div class="white-text">
+          <h6>{{ error }}</h6>
+        </div>
+      </div>
+    </div>
 
-    <button type="submit" [disabled]="!formData.valid" class="basic-btn">Create my account</button>
-  </form>
-  
-</div>
+    <div class="card-panel green darken-1" *ngIf="success" [@fallIn]='state'>
+      <div class="row">
+        <div class="white-text">
+          <h6>{{ success }}</h6>
+        </div>
+      </div>
+    </div>
+
+    <form materialize class="col s12" #formData='ngForm' (ngSubmit)="onSubmit(formData)" class="example-container">
+      <div class="row">
+        <div class="input-field col s12">
+          <i class="material-icons prefix">email</i>
+          <label for="email">Email</label>
+          <input type="email" class="validate" [(ngModel)]="email" name="email" id="email" required>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s12">
+          <i class="material-icons prefix">enhanced_encryption</i>
+          <label for="password">Password</label>
+          <input type="password" class="validate" [(ngModel)]="password" name="password" id="password" required>
+        </div>
+      </div>
+      <div class="row text-center">
+        <div class="input-field col s12">
+          <button type="submit" [disabled]="!formData.valid" class="waves-effect waves-light btn">Create my account</button>
+        </div>
+      </div>
+    </form>
+  </div>

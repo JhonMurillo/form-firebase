@@ -11,6 +11,9 @@ import { routes } from './app.routes';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { AngularFireDatabaseModule, AngularFireDatabase } from 'angularfire2/database';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatButtonModule, MatCheckboxModule, MatInputModule, MatFormFieldModule} from '@angular/material';
+import { MaterializeModule } from "angular2-materialize";
+
 
 export const firebaseConfig = {
   apiKey: "AIzaSyBuZZDWUEWeH7jcV5qoAJYKS9pbJI_wB-E",
@@ -22,6 +25,12 @@ export const firebaseConfig = {
 };
 
 @NgModule({
+  imports: [MatButtonModule, MatCheckboxModule, MatInputModule, MatFormFieldModule],
+  exports: [MatButtonModule, MatCheckboxModule, MatInputModule, MatFormFieldModule],
+})
+export class MyOwnCustomMaterialModule { }
+
+@NgModule({
   declarations: [
     AppComponent,
     SignUpComponent
@@ -31,9 +40,11 @@ export const firebaseConfig = {
     BrowserAnimationsModule,
     FormsModule,
     HttpClientModule,
+    MyOwnCustomMaterialModule,
     HttpModule,
     AngularFireModule.initializeApp(firebaseConfig),
-    routes
+    routes,
+    MaterializeModule,
   ],
   providers: [AuthGuard, AngularFireAuth, AngularFireDatabase],
   bootstrap: [AppComponent]
