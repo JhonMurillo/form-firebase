@@ -2,13 +2,11 @@
     <div class="text-center">
       <img [src]="image" width="200" alt="Form FB Logo">
     </div>
-
-    <a routerLink="/signup" id="goback">Sign In</a>
+    <a routerLink="/signin" routerLinkActive="active" class="alc">Sign In</a>
 
     <h2>{{ title }}</h2>
 
-    <!--span class="alert-danger" *ngIf="error" [@fallIn]='state'>{{ error }}</span-->
-
+    
     <div class="card-panel red darken-1" *ngIf="error" [@fallIn]='state'>
       <div class="row">
         <div class="white-text">
