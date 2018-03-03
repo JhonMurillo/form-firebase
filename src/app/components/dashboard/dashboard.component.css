@@ -2,9 +2,16 @@ body {
     display: flex;
     min-height: 100vh;
     flex-direction: column;
-    background:black !important;
+    background:#E2E4E6;
+    padding-top: 0%
 }
 
 main {
   flex: 1 0 auto;
+}
+
+.page-footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
 }

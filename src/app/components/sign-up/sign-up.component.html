@@ -1,9 +1,7 @@
-<div class="form-container">
-    <div class="text-center">
+<div class="form-container row">
+    <div class="text-center row">
       <img [src]="image" width="200" alt="Form FB Logo">
     </div>
-    <a routerLink="/signin" routerLinkActive="active" class="alc">Sign In</a>
-
     <h2>{{ title }}</h2>
 
     
@@ -23,16 +21,23 @@
       </div>
     </div>
 
-    <form materialize class="col s12" #formData='ngForm' (ngSubmit)="onSubmit(formData)" class="example-container">
+    <form materialize class="col s12" #formData='ngForm' (ngSubmit)="onSubmit(formData)">
       <div class="row">
         <div class="input-field col s12">
+          <i class="material-icons prefix">account_box</i>
+          <label for="name">Name</label>
+          <input type="text" class="validate" [(ngModel)]="name" name="name" id="name" required maxlength="30">
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s12 ">
           <i class="material-icons prefix">email</i>
           <label for="email">Email</label>
           <input type="email" class="validate" [(ngModel)]="email" name="email" id="email" required>
         </div>
       </div>
       <div class="row">
-        <div class="input-field col s12">
+        <div class="input-field col s12 ">
           <i class="material-icons prefix">enhanced_encryption</i>
           <label for="password">Password</label>
           <input type="password" class="validate" [(ngModel)]="password" name="password" id="password" required>
@@ -44,4 +49,5 @@
         </div>
       </div>
     </form>
+    <a routerLink="/signin" routerLinkActive="active" class="alc">Sign In</a>
   </div>

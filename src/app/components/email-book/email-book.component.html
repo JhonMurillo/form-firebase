@@ -1,0 +1,12 @@
+<div class="form-container-email row">
+  <h2>{{ title }}</h2>
+  <ul>
+      <li class="text" *ngFor="let user of users | async">
+          {{user.name}} {{user.email}} 
+       <pre>
+          {{user | json }}
+       </pre>
+      </li>
+    </ul>
+
+</div>
