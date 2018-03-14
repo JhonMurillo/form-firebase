@@ -1,12 +1,15 @@
 <div class="form-container-email row">
   <h2>{{ title }}</h2>
-  <ul>
-      <li class="text" *ngFor="let user of users | async">
-          {{user.name}} {{user.email}} 
-       <pre>
-          {{user | json }}
-       </pre>
-      </li>
-    </ul>
-
+  <br/>
+  <div class="row">
+    <div class="col s12">
+      <div class="row">
+        <div class="input-field col s12">
+          <i class="material-icons prefix">textsms</i>
+          <input type="email" id="autocomplete-input" class="autocomplete">
+          <label for="autocomplete-input">Add Contact</label>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
