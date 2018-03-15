@@ -19,6 +19,10 @@ export class UserServiceService {
     this.users = this.db.list('users').valueChanges();
   }
 
+  getUserListByEmail(email){
+    return this.db.list('users',ref => ref.orderByChild('email').equalTo('email')).valueChanges();
+  }
+
   getUser(key: string): AngularFireObject<User> {
     const itemPath = `${this.basePath}/${key}`;
     this.user = this.db.object(itemPath)

@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { moveIn, fallIn } from '../../router.animations';
 import { UserServiceService } from '../../services/user-service.service';
 import { User } from '../../classes/user';
+import { EmailBook } from '../../classes/email-book';
 import { Observable } from 'rxjs/Observable';
 declare var jQuery: any;
 declare var $: any;
@@ -18,10 +19,11 @@ import { toast } from 'angular2-materialize';
 export class EmailBookComponent implements OnInit {
   state: string = '';
   error: any;
-  success: any;
+  userAgg: string;
   emailCurrent;
   title: string = 'Accounts';
   users: Observable<Array<User>> = null;
+  emailBook: EmailBook = new EmailBook();
   usersAux: Map<string, boolean>;
   elementInput: Object;
 
@@ -46,6 +48,18 @@ export class EmailBookComponent implements OnInit {
       },
       minLength: 1, // The minimum length of the input for the autocomplete to start. Default: 1.
     },this);
+  }
+
+  onSaveEmailBook(formData){
+    this.emailBook.accepted = false;
+    this.emailBook.invited = false;
+    this.emailBook.userGuest.uid = this.af.auth.currentUser.uid;
+    this.emailBook.userGuest.name = this.af.auth.currentUser.displayName;
+    this.emailBook.userGuest.email = this.af.auth.currentUser.email;
+    this.emailBook.userGuest.emailVerified = this.af.auth.currentUser.emailVerified;
+    console.log(this.emailBook)
+    let user = this.userService.getUserListByEmail(this.userAgg);
+    console.log(user);
   }
 
   ngOnInit() {

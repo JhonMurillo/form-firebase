@@ -1,15 +1,27 @@
-<div class="form-container-email row">
-  <h2>{{ title }}</h2>
-  <br/>
-  <div class="row">
-    <div class="col s12">
-      <div class="row">
-        <div class="input-field col s12">
-          <i class="material-icons prefix">textsms</i>
-          <input type="email" id="autocomplete-input" class="autocomplete">
-          <label for="autocomplete-input">Add Contact</label>
+<div class="form-container-email">
+  <form materialize class="col s12" #formData='ngForm' (ngSubmit)="onSaveEmailBook(formData)" class="example-container">
+    <div class="row">
+      <div class="col s12">
+        <div class="row">
+          <div class="input-field col s12">
+            <i class="material-icons prefix">textsms</i>
+            <input [(ngModel)]="userAgg" name="userAgg" type="email" id="userAgg" class="autocomplete validate">
+            <label for="userAgg">Add Contact</label>
+          </div>
         </div>
       </div>
     </div>
+    <div class="row text-center">
+      <div class="input-field col s12">
+        <button type="submit" [disabled]="!formData.valid" class="waves-effect waves-light btn">Agg</button>
+      </div>
+    </div>
+  </form>
+  <div class="row">
+    <ul>
+      <li class="text" *ngFor="let user of users | async">
+        <a ng-if="true">{{user.email}}</a>
+      </li>
+    </ul>
   </div>
 </div>
