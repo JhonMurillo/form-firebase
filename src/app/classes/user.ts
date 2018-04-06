@@ -1,7 +1,7 @@
 export class User {
-    uid: string;
+    $key: string;
+    key: string;
     name: string;
     email: string;
-    password: string;
     emailVerified: boolean;
 }

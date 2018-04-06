@@ -41,7 +41,7 @@ export class SignUpComponent implements OnInit {
           this.name = '';
           this.phone = '';
           var user: any = this.af.auth.currentUser;
-          console.log(this.af.auth.currentUser);
+
           user.updateProfile({
             displayName: formData.value.name
           }).then(function () { 
