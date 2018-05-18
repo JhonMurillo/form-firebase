@@ -38,11 +38,11 @@ export class SignUpComponent implements OnInit {
       return this.af.auth.createUserWithEmailAndPassword(formData.value.email, formData.value.password)
         .then((user) => {
           this.authState = user
-          this.updateUserData()
+         // this.updateUserData()
           this.success = 'User Registrer, verify your email ' + formData.value.email
           this.email = '';
           this.password = '';
-          this.name = '';
+          const names = formData.value.name;
           this.phone = '';
           var user: any = this.af.auth.currentUser;
           let genderText = this.gender ? 'male' : 'female'
@@ -53,7 +53,7 @@ export class SignUpComponent implements OnInit {
               console.log(data)
               console.log(photoUrl)
               user.updateProfile({
-                displayName: formData.value.name,
+                displayName: names,
                 photoURL: photoUrl
               }).then(function () {
                 user.sendEmailVerification().then(function () { });
@@ -80,7 +80,7 @@ export class SignUpComponent implements OnInit {
     let path = `users/${this.currentUserId}`; // Endpoint on firebase
     let data = {
       email: this.authState.email,
-      name: this.authState.displayName
+      displayName: this.authState.displayName
     }
 
     this.db.object(path).update(data)

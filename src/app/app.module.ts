@@ -20,6 +20,23 @@ import { UserServiceService } from './services/user-service.service';
 import { EmailBookServiceService } from './services/email-book-service.service';
 import { ImageServiceService } from './services/image-service.service';
 
+
+import { StarterComponent } from './starter/starter.component';
+import { StarterHeaderComponent } from './starter/starter-header/starter-header.component';
+import { StarterLeftSideComponent } from './starter/starter-left-side/starter-left-side.component';
+import { StarterContentComponent } from './starter/starter-content/starter-content.component';
+import { StarterFooterComponent } from './starter/starter-footer/starter-footer.component';
+import { StarterControlSidebarComponent } from './starter/starter-control-sidebar/starter-control-sidebar.component';
+import { AdminComponent } from './admin/admin.component';
+import { AdminHeaderComponent } from './admin/admin-header/admin-header.component';
+import { AdminLeftSideComponent } from './admin/admin-left-side/admin-left-side.component';
+import { AdminContentComponent } from './admin/admin-content/admin-content.component';
+import { AdminFooterComponent } from './admin/admin-footer/admin-footer.component';
+import { AdminControlSidebarComponent } from './admin/admin-control-sidebar/admin-control-sidebar.component';
+import { AdminDashboard1Component } from './admin/admin-dashboard1/admin-dashboard1.component';
+import { AdminModule } from './admin/admin.module';
+
+
 export const firebaseConfig = {
   apiKey: "AIzaSyBuZZDWUEWeH7jcV5qoAJYKS9pbJI_wB-E",
   authDomain: "project-633b2.firebaseapp.com",
@@ -37,7 +54,13 @@ export const firebaseConfig = {
     DashboardComponent,
     ResetPasswordComponent,
     EmailBookComponent,
-    MessageComponent
+    MessageComponent,
+    StarterComponent,
+    StarterHeaderComponent,
+    StarterLeftSideComponent,
+    StarterContentComponent,
+    StarterFooterComponent,
+    StarterControlSidebarComponent
   ],
   imports: [
     BrowserModule,

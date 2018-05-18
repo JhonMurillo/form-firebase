@@ -41,6 +41,30 @@ export class EmailBookComponent implements OnInit {
     private emailBookService: EmailBookServiceService) {
     this.af.authState.subscribe((auth) => {
       this.authState = auth
+      this.emailCurrent = this.af.auth.currentUser.email;
+      this.emailBooksGuest = this.emailBookService.getEmailBookByUserGuest(this.af.auth.currentUser.uid)
+      this.emailBooksInvite = this.emailBookService.getEmailBookByUserInvite(this.af.auth.currentUser.uid)
+    });
+    $('#btn-agg').addClass('disabled')
+    $('#btn-sendinv').addClass('disabled')
+    this.userAgg = new User();
+    this.users = this.userService.users;
+
+    this.elementInput = {};
+    this.usersAux = new Map();
+    this.users.forEach(element => {
+      element.forEach(user => {
+        if (user.email !== this.emailCurrent) {
+
+
+          this.elementInput[user.email] = null;
+           
+          console.log(this.userService.getUser(user.key))
+
+          this.usersAux.set(user.email, user);
+        }
+      });
+      this.onLoadAutoComplete(this);
     });
   }
 
@@ -90,6 +114,10 @@ export class EmailBookComponent implements OnInit {
   }
 
   onSaveEmailBook() {
+    if(!this.userAgg.email){
+      toast('!Enter Email', 3000, 'rounded')
+      return;
+    }
     this.emailBook.accepted = false;
     this.emailBook.invited = false;
     this.emailBook.date = new Date();
@@ -115,24 +143,7 @@ export class EmailBookComponent implements OnInit {
   }
 
   ngOnInit() {
-    $('#btn-agg').addClass('disabled')
-    $('#btn-sendinv').addClass('disabled')
-    this.userAgg = new User();
-    this.emailCurrent = this.af.auth.currentUser.email;
-    this.users = this.userService.users;
-    this.emailBooksGuest = this.emailBookService.getEmailBookByUserGuest(this.af.auth.currentUser.uid)
-    this.emailBooksInvite = this.emailBookService.getEmailBookByUserInvite(this.af.auth.currentUser.uid)
-    this.elementInput = {};
-    this.usersAux = new Map();
-    this.users.forEach(element => {
-      element.forEach(user => {
-        if (user.email !== this.emailCurrent) {
-          this.elementInput[user.email] = user.photoURL;
-          this.usersAux.set(user.email, user);
-        }
-      });
-      this.onLoadAutoComplete(this);
-    });
+
 
   }
 
