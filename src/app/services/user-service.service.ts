@@ -12,10 +12,14 @@ export class UserServiceService {
   users: Observable<any[]>; //  list of objects
   usersRef: AngularFireList<any>;
   user: AngularFireObject<User> = null;
+  u : User = null;
   constructor(private db: AngularFireDatabase) {
     this.usersRef = this.db.list<User>(this.basePath);
     this.users = this.usersRef.snapshotChanges().map(changes => {
-      return changes.map(c => ({ $key: c.payload.key, ...c.payload.val() }));
+      return changes.map(c => ({ 
+        $key: c.payload.key,
+        user: this.u = c.payload.val()
+        }));
     });
   };
 

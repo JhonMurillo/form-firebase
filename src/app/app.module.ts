@@ -11,7 +11,6 @@ import { routes } from './app.routes';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { AngularFireDatabaseModule, AngularFireDatabase } from 'angularfire2/database';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MaterializeModule } from "angular2-materialize";
 import { SignInComponent } from './components/sign-in/sign-in.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { ResetPasswordComponent } from './components/reset-password/reset-password.component';
@@ -19,6 +18,7 @@ import { EmailBookComponent } from './components/email-book/email-book.component
 import { MessageComponent } from './components/message/message.component';
 import { UserServiceService } from './services/user-service.service';
 import { EmailBookServiceService } from './services/email-book-service.service';
+import { ImageServiceService } from './services/image-service.service';
 
 export const firebaseConfig = {
   apiKey: "AIzaSyBuZZDWUEWeH7jcV5qoAJYKS9pbJI_wB-E",
@@ -46,12 +46,12 @@ export const firebaseConfig = {
     HttpClientModule,
     HttpModule,
     AngularFireModule.initializeApp(firebaseConfig),
-    routes,
-    MaterializeModule,
+    routes
   ],
   providers: [AuthGuard, AngularFireAuth, AngularFireDatabase
     , UserServiceService
-    , EmailBookServiceService],
+    , EmailBookServiceService, ImageServiceService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+

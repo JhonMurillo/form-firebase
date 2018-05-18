@@ -31,7 +31,7 @@ export class EmailBookComponent implements OnInit {
   usersAux: Map<string, User>;
   elementInput: Object;
   checkbox: boolean = true
-  emailSend : string 
+  emailSend: string
 
   authState: any = null;
   constructor(public af: AngularFireAuth,
@@ -127,7 +127,7 @@ export class EmailBookComponent implements OnInit {
     this.users.forEach(element => {
       element.forEach(user => {
         if (user.email !== this.emailCurrent) {
-          this.elementInput[user.email] = null;
+          this.elementInput[user.email] = user.photoURL;
           this.usersAux.set(user.email, user);
         }
       });

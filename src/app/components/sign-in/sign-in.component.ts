@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { AngularFireDatabaseModule, AngularFireDatabase } from 'angularfire2/database';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { Router } from '@angular/router';
 import { moveIn, fallIn } from '../../router.animations';
+
 
 @Component({
   selector: 'app-sign-in',
@@ -32,9 +33,9 @@ export class SignInComponent implements OnInit {
       return this.af.auth.signInWithEmailAndPassword(formData.value.email, formData.value.password)
         .then((user) => {
           this.authState = user
-          if(!user.emailVerified){
-            throw "Email Not Verified"; 
-          } 
+          if (!user.emailVerified) {
+            throw "Email Not Verified";
+          }
           this.updateUserData()
           this.email = '';
           this.password = '';
